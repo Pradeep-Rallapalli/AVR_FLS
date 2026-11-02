@@ -1,7 +1,8 @@
+#include "Constants.h"
+
 
 #define SERIAL_RATE 9600
-const int MAX_INPUT_SIZE = 32;
-char receivedBytes[MAX_INPUT_SIZE];
+char receivedBytes[Constants::MAX_INPUT_SIZE];
 
 
 
@@ -25,7 +26,7 @@ void parseInput() {
 
       if (temp == '\n') break;
 
-      if (idx < MAX_INPUT_SIZE - 1) {
+      if (idx < Constants::MAX_INPUT_SIZE - 1) {
         receivedBytes[idx] = temp;
         idx++;
       }
