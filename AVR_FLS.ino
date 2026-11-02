@@ -1,8 +1,10 @@
 #include "Constants.h"
+#include "Node.h"
 
 
 #define SERIAL_RATE 9600
 char receivedBytes[Constants::MAX_INPUT_SIZE];
+
 
 
 
@@ -15,6 +17,8 @@ void setup() {
 void loop() {
   parseInput();
   Serial.print(receivedBytes);
+
+  Node file(receivedBytes);
 }
 
 void parseInput() {

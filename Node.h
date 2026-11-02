@@ -1,4 +1,5 @@
 #pragma once 
+#include "Constants.h"
 
 class Node {
   private:
@@ -6,9 +7,7 @@ class Node {
   char* fileNamePtr;
   
   public:
-  Node(const char* fileNamePtr) {
-    
-    
+  Node(const char* fileNamePtr);
 
-  }
-}
+  ~Node();
+};
