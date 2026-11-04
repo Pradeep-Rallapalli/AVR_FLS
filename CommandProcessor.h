@@ -5,9 +5,8 @@
 class CommandProcessor {
 
 public:
-    CommandProcessor() {
-
-    }
+    CommandProcessor();
+    void lookUpAndRun(const char* receivedBytes);
     void changeDirectory() {
         //TODO CHANGE DIRECTORY OR RETURN TO ROOT
     }
@@ -18,22 +17,20 @@ public:
         //TODO CREATE DIRECTORY
     }
 
-private:
-
-
-
-};
-
-struct KeyValuePair {
+private: 
+  struct KeyValuePair {
     const char *key;
     void (CommandProcessor::*funcPtr)(void);
-};
+  };
 
 const char cd_str[] PROGMEM = "cd";
 const char ls_str[] PROGMEM = "ls";
 const char mkdir_str[] PROGMEM = "mkdir";
-const KeyValuePair commandMap[] PROGMEM= {
-  {cd_str, &CommandProcessor::changeDirectory},
-  {ls_str, &CommandProcessor::list},
-  {mkdir_str, &CommandProcessor::createDirectory}
+
+  const KeyValuePair commandMap[] PROGMEM= {
+    {cd_str, &CommandProcessor::changeDirectory},
+    {ls_str, &CommandProcessor::list},
+    {mkdir_str, &CommandProcessor::createDirectory}
+  };
 };
+
