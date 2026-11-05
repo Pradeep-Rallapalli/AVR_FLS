@@ -7,7 +7,7 @@ Node::Node(const char* fileNamePtr) {
       size++;
     }
 
-    this->fileNamePtr = malloc(size + 1 * sizeof(char));
+    this->fileNamePtr = new char[size + 1];
     
     if (this->fileNamePtr == nullptr) {
         Serial.println(F("Error: File creation memory allocation FAILED!"));

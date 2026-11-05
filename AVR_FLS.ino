@@ -1,24 +1,27 @@
 #include "Constants.h"
 #include "Node.h"
+#include "CommandProcessor.h"
 
 
 #define SERIAL_RATE 9600
 char receivedBytes[Constants::MAX_INPUT_SIZE];
 
-
+CommandProcessor cmdProc;
 
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(SERIAL_RATE);
+  while (!Serial);
   Serial.flush();
 }
 
 void loop() {
+  Serial.print("Enter Command: ");
   parseInput();
   Serial.print(receivedBytes);
-
-  Node file(receivedBytes);
+  Serial.println();
+  cmdProc.lookUpAndRun(receivedBytes);
 }
 
 void parseInput() {
