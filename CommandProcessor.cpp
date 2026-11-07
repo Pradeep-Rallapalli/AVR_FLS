@@ -33,13 +33,6 @@ void extractCommand(const char* receivedBytes, char* extractedCommand, bool& did
     Serial.println("INVALID COMMAND ENTERED!");
 }
 
-/*
-
-Last left off at trying to see if user input can hit a match on the map.
-Having trouble extracting key and comparing it to user input. 
-First understand how key is extracted then try.
-
-*/
 
 void CommandProcessor::lookUpAndRun(const char *receivedBytes) {
     bool didExtract = false;

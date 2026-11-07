@@ -11,7 +11,6 @@ public:
     void list();
     void createDirectory();
 
-private: 
   
 };
 
