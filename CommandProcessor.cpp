@@ -22,8 +22,8 @@ void extractCommand(const char* receivedBytes, char* extractedCommand, bool& did
     for(uint8_t i = 0; i < Constants::MAX_COMMAND_SIZE; i++) {
         if(receivedBytes[i] == Constants::NULL_TERMINATOR || receivedBytes[i] == ' ') {
             extractedCommand[i] = Constants::NULL_TERMINATOR;
-            Serial.print("Command extracted: ");
-            Serial.println(extractedCommand);
+            //Serial.print("Command extracted: ");
+            //Serial.println(extractedCommand);
             didExtract = true;
             return;
         }
