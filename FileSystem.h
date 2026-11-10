@@ -1,13 +1,9 @@
 #pragma once
 #include "Constants.h"
 
-struct File {
-  char fileName[Constants::MAX_NAME_LENGTH];
-};
-
-struct Directory {
-  char directoryName[Constants::MAX_NAME_LENGTH];
-  File* filesInDirectory[];
+struct Node {
+  char name[Constants::MAX_NAME_LENGTH + 1];
+  uint8_t parent; 
 };
 
 class FileSystem {
@@ -20,4 +16,7 @@ public:
   void deleteFile(char fileName[Constants::MAX_NAME_LENGTH]);
   void deleteDirectory(char fileName[Constants::MAX_NAME_LENGTH]);
 
+private:
+Node nodes[32];
+int currentDirectory;
 };
