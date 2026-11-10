@@ -1,15 +1,19 @@
 #pragma once
 #include "Constants.h"
 
+enum Type : uint8_t {FILE, DIRECTORY}; 
+
 struct Node {
   char name[Constants::MAX_NAME_LENGTH + 1];
   uint8_t parent; 
+  Type type;
 };
 
 class FileSystem {
 
 public:
-  void createFile();
+  FileSystem();
+  void createFile(const char* fileName);
   void createDirectory();
   void list();
   void changeDirectory(char directoryName[Constants::MAX_NAME_LENGTH]);
@@ -17,6 +21,6 @@ public:
   void deleteDirectory(char fileName[Constants::MAX_NAME_LENGTH]);
 
 private:
-Node nodes[32];
+Node nodes[Constants::NODES_ARRAY_SIZE] = {0};
 int currentDirectory;
 };
