@@ -19,7 +19,6 @@ void setup() {
 void loop() {
   Serial.print("Enter Command: ");
   parseInput();
-  Serial.print(receivedBytes);
   Serial.println();
   cmdProc.lookUpAndRun(receivedBytes);
 }

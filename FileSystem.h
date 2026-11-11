@@ -1,7 +1,7 @@
 #pragma once
 #include "Constants.h"
 
-enum Type : uint8_t {FILE, DIRECTORY}; 
+enum Type : uint8_t {T_FILE, T_DIRECTORY}; 
 
 struct Node {
   char name[Constants::MAX_NAME_LENGTH + 1];
@@ -21,6 +21,8 @@ public:
   void deleteDirectory(char fileName[Constants::MAX_NAME_LENGTH]);
 
 private:
-Node nodes[Constants::NODES_ARRAY_SIZE] = {0};
-int currentDirectory;
+Node nodes[Constants::NODES_ARRAY_SIZE];
+uint8_t currentDirectory;
+uint8_t vacantIndex;
 };
+
