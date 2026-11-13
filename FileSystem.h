@@ -1,6 +1,7 @@
 #pragma once
 #include "Constants.h"
 #include "Node.h"
+#include "DataBase.h"
 
 class FileSystem {
 
@@ -19,5 +20,6 @@ Node nodes[Constants::NODES_ARRAY_SIZE];
 uint8_t matchingNodes[Constants::NODES_ARRAY_SIZE];
 uint8_t currentDirectory;
 uint8_t vacantIndex;
+DataBase db;
 };
 

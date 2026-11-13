@@ -7,7 +7,7 @@
 #define SERIAL_RATE 9600
 char receivedBytes[Constants::MAX_INPUT_SIZE];
 
-CommandProcessor cmdProc;
+CommandProcessor* cmdProc;
 
 
 void setup() {
@@ -15,13 +15,15 @@ void setup() {
   Serial.begin(SERIAL_RATE);
   while (!Serial);
   Serial.flush();
+
+  cmdProc = new CommandProcessor();
 }
 
 void loop() {
-  Serial.print("Enter Command: ");
+  Serial.print("$: ");
   parseInput();
   Serial.println();
-  cmdProc.lookUpAndRun(receivedBytes);
+  cmdProc->lookUpAndRun(receivedBytes);
 }
 
 void parseInput() {

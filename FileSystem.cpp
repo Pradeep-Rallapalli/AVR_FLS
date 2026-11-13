@@ -2,15 +2,25 @@
 #include "Constants.h"
 
 
-
+/*
+Refactor:
+- Database creates root. Pass it nodes array.
+- set vacant index to not root 
+*/
 FileSystem::FileSystem() {
+  if(!db.loadAll(nodes)) {
+    Serial.println(F("DB to Memory load failure! Corrupt DB Data."));
+    Serial.println(F("Program Yeilding."));
+    while(1);
+  }
   currentDirectory = 0;
-  Node root;
-  strcpy(root.name, "/");
-  root.parent = 0;
-  root.type = T_DIRECTORY;
-  nodes[currentDirectory] = root;
   vacantIndex = 1;
+
+  Serial.println();
+  Serial.print(F("File system ready. Storage used: %"));
+  Serial.print(((float)db.countUsed(nodes)/Constants::NODES_ARRAY_SIZE) * 100);
+  Serial.println();
+
 }
 
 uint8_t FileSystem::getMatchingNodes(uint8_t key) {
@@ -33,19 +43,20 @@ void FileSystem::createFile(const char* fileName) {
   
   if(vacantIndex < Constants::NODES_ARRAY_SIZE) {
     nodes[vacantIndex] = newFile;
+    if(!db.saveNode(vacantIndex, newFile)) {
+      Serial.println(F("DB Save Error!"));
+    }
     vacantIndex++;
   }
-  
+
+  Serial.println();
+  Serial.print("file ");
+  Serial.print(fileName);
+  Serial.print(" saved!");
+  Serial.println();
 }
 
-/*
-use current directory,
-retrive all nodes with matching current directory
-return to list 
-*/
-
-
-
+ 
 void FileSystem::list() {
   Serial.println(F("-----List-----"));
 
@@ -69,7 +80,6 @@ void FileSystem::list() {
       Serial.print('/');
     }
     Serial.println();
-    delay(500);
   }
 
   Serial.println(F("--------------"));
