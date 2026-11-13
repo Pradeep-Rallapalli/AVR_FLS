@@ -25,8 +25,6 @@ void extractCommand(const char* receivedBytes, char* extractedCommand, char* ext
     for(i; i < Constants::MAX_COMMAND_SIZE; i++) {
         if(receivedBytes[i] == Constants::NULL_TERMINATOR || receivedBytes[i] == ' ') {
             extractedCommand[i] = Constants::NULL_TERMINATOR;
-            //Serial.print("Command extracted: ");
-            //Serial.println(extractedCommand);
             didExtract = true;
             break;
         } 

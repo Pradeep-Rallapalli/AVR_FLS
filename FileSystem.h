@@ -21,7 +21,9 @@ public:
   void deleteDirectory(char fileName[Constants::MAX_NAME_LENGTH]);
 
 private:
+uint8_t getMatchingNodes(uint8_t key);
 Node nodes[Constants::NODES_ARRAY_SIZE];
+uint8_t matchingNodes[Constants::NODES_ARRAY_SIZE];
 uint8_t currentDirectory;
 uint8_t vacantIndex;
 };

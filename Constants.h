@@ -3,7 +3,7 @@
 
 namespace Constants {
   
-  constexpr uint8_t NODES_ARRAY_SIZE = 32;
+  constexpr uint8_t NODES_ARRAY_SIZE = 54; // 972 bytes of ram needed for files. This number was chosen based on the EEPROM limit of 1kb.
   constexpr uint8_t MAX_NAME_LENGTH= 15;
   constexpr uint8_t MAX_INPUT_SIZE = 32;
   constexpr char NULL_TERMINATOR = '\0';
