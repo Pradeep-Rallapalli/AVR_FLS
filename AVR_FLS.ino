@@ -1,5 +1,7 @@
+#include <EEPROM.h>
 #include "Constants.h"
 #include "CommandProcessor.h"
+
 
 
 #define SERIAL_RATE 9600

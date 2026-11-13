@@ -10,4 +10,6 @@ namespace Constants {
   
   //Update if new commands are added
   constexpr uint8_t MAX_COMMAND_SIZE = 6;
+
+  constexpr int EEPROM_LENGTH = 1024;
 }
